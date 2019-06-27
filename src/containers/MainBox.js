@@ -4,7 +4,7 @@ import { Profile, Photos, Cocktails, Pokemon } from "../components/Pages.js";
 
 class MainBox extends React.Component {
   state = {
-    filter: "none"
+    filter: ""
   };
 
   selectFilter = e => {
@@ -14,32 +14,32 @@ class MainBox extends React.Component {
     });
   };
 
-  // selectedFilter = () => {
-  //   switch (this.state.filter) {
-  //     case "pokemon":
-  //       return <Pokemon />;
+  selectedFilter = () => {
+    switch (this.state.filter) {
+      case "pokemon":
+        return <Pokemon />;
 
-  //     case "photos":
-  //       return <Photos />;
+      case "photo":
+        return <Photos />;
 
-  //     case "profile":
-  //       return <Profile />;
+      case "profile":
+        return <Profile />;
 
-  //     case "cocktails":
-  //       return <Cocktails />;
+      case "cocktail":
+        return <Cocktails />;
 
-  //     default:
-  //       return <div />;
-  //   }
-  // };
-
-  rendermap = {
-    pokemon: Pokemon,
-    cocktail: Cocktails,
-    photo: Photos,
-    profile: Profile,
-    none: "div"
+      default:
+        return <div />;
+    }
   };
+
+  // rendermap = {
+  //   pokemon: Pokemon,
+  //   cocktail: Cocktails,
+  //   photo: Photos,
+  //   profile: Profile,
+  //   none: "div"
+  // };
 
   render() {
     /*
@@ -49,13 +49,13 @@ class MainBox extends React.Component {
     Replace the code below! Depending on what menu item is selected in the menu, I should render either a Profile, Photos, Cocktails, or Pokemon component.Think of a way to track which menu item was selected. Which component should have state? Which component should have methods to control state? Where should these methods be called?
 
     */
-    const RenderedItem = this.rendermap[this.state.filter];
-
+    // const RenderedItem = this.rendermap[this.state.filter];
+    const RenderedItem = this.selectedFilter;
     return (
       <div>
         <MenuBar selectFilter={this.selectFilter} />
 
-        <RenderedItem />
+        {<RenderedItem />}
       </div>
     );
   }
